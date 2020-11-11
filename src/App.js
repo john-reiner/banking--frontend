@@ -1,11 +1,18 @@
 import './App.css';
-import Login from './Login';
+import Home from './Home';
+import Dashboard from './DashBoard'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Login />
+        <BrowserRouter>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/dashboard' component={Dashboard} />
+            </Switch>
+        </BrowserRouter>
       </header>
     </div>
   );
