@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function DashBoard() {
+export default function DashBoard(props) {
     return (
         <div>
-            DashBoard
+            <h1>Dashboard</h1>
+            <h1>Status: {props.loggedInStatus}</h1>
         </div>
     )
 }
