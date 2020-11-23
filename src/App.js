@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
+import axios from 'axios'
 import Home from './Home';
 import Dashboard from './DashBoard'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
@@ -8,6 +9,21 @@ function App(props) {
 
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN")
   const [user, setUser] = useState({})
+
+  const checkLoginStatus = () => {
+    axios.get("http://localhost:3001/logged_in", { withCredentials: true })
+    .then(response => {
+      
+      console.log(response)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+  useEffect(() => {
+    checkLoginStatus()
+  }, [])
 
   const handleLogin = data => {
     setLoggedInStatus("Logged In!!")
