@@ -11,7 +11,7 @@ function App(props) {
 
   const handleLogin = data => {
     setLoggedInStatus("Logged In!!")
-    setUser(data)
+    setUser(data.user)
   }
 
   return (

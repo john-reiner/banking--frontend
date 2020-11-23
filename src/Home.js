@@ -1,5 +1,6 @@
 import React from 'react'
 import Registration from './auth/Registration'
+import Login from './auth/Login'
 
 export default function Home(props) {
 
@@ -13,6 +14,7 @@ export default function Home(props) {
             <h1>Home</h1>
             <h1>Status: {props.loggedInStatus}</h1>
             <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
+            <Login />
         </div>
     )
 }
