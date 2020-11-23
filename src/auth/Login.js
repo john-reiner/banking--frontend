@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 
-export default function Login() {
+export default function Login(props) {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -11,6 +11,9 @@ export default function Login() {
         e.preventDefault()
         axios.post("http://localhost:3001/sessions", {user: {username, password}}, { withCredentials: true })
         .then(response => {
+            if (response.data.logged_in) {
+                props.handleSuccessfulAuth(response.data)
+            }
             console.log("res from login ", response)
         })
         .catch(error => {

@@ -14,7 +14,7 @@ export default function Home(props) {
             <h1>Home</h1>
             <h1>Status: {props.loggedInStatus}</h1>
             <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
-            <Login />
+            <Login handleSuccessfulAuth={handleSuccessfulAuth} />
         </div>
     )
 }
