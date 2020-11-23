@@ -13,7 +13,13 @@ function App(props) {
   const checkLoginStatus = () => {
     axios.get("http://localhost:3001/logged_in", { withCredentials: true })
     .then(response => {
-      
+      if (response.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
+        setLoggedInStatus("LOGGED_IN")
+        setUser(response.data.user)
+      } else if (!response.data.logged_in && loggedInStatus === "LOGGED_IN") {
+        setLoggedInStatus("NOT_LOGGED_IN")
+        setUser({})
+      }
       console.log(response)
     })
     .catch(error => {
@@ -26,7 +32,7 @@ function App(props) {
   }, [])
 
   const handleLogin = data => {
-    setLoggedInStatus("Logged In!!")
+    setLoggedInStatus("LOGGED_IN")
     setUser(data.user)
   }
 
